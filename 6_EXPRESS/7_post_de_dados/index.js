@@ -7,6 +7,13 @@ const PATH = require('path')
 
 const BASEPATH = PATH.join(__dirname, 'templates')
 
+APP.get('/users/add', (req,res) => {
+    res.sendFile(`${BASEPATH}/userform.html`)
+})
+
+APP.post('/users/save', (req,res) => {
+
+})
 
 APP.get('/users/:id', (req,res) => {
     const ID = req.params.id
