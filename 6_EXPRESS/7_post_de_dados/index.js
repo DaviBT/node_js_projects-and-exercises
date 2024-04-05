@@ -5,6 +5,15 @@ const PORT = 3000 // ambient variable
 
 const PATH = require('path')
 
+// read the body
+APP.use(
+    EXPRESS.urlencoded({
+        extended:true,
+    }),
+)
+
+APP.use(EXPRESS.json())
+
 const BASEPATH = PATH.join(__dirname, 'templates')
 
 APP.get('/users/add', (req,res) => {
@@ -12,7 +21,14 @@ APP.get('/users/add', (req,res) => {
 })
 
 APP.post('/users/save', (req,res) => {
+    console.log(req.body)
 
+    const name = req.body.name
+    const age = req.body.age
+    
+    console.log(`The user name is ${name} and he is ${age} years old`)
+
+    res.sendFile(`${BASEPATH}/userform.html`)
 })
 
 APP.get('/users/:id', (req,res) => {
