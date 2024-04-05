@@ -7,18 +7,15 @@ const PATH = require('path')
 
 const BASEPATH = PATH.join(__dirname, 'templates')
 
-const CHECKAUTH = function(req, res, next) {
-    req.authStatus = false
-    if(req.authStatus) {
-        console.log("You're logged, you can continue")
-        next()
-    } else {
-        console.log("You're not logged, make login to continue")
-        next()
-    }
-}
 
-APP.use(CHECKAUTH)
+APP.get('/', (req,res) => {
+    const ID = req.params.id
+
+    // reading the users table, searching a user from the database
+    console.log(`Estamos buscando pelo usuário: ${ID}`)
+
+    res.sendFile(`${BASEPATH}/index.html`)
+})
 
 APP.get('/', (req,res) => {
     res.sendFile(`${BASEPATH}/index.html`)
