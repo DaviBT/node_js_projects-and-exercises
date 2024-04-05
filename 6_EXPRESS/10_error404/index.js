@@ -30,6 +30,9 @@ APP.get('/', (req,res) => {
     res.sendFile(`${BASEPATH}/index.html`)
 })
 
+APP.use(function(req, res, next){
+    res.status(404).sendFile(`${BASEPATH}/404.html`)
+})
 
 APP.listen(PORT, ( ) => {
 
