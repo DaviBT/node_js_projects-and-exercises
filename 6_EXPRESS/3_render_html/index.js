@@ -8,12 +8,12 @@ const PATH = require('path')
 const BASEPATH = PATH.join(__dirname, 'templates')
 
 APP.get('/', (req,res) => {
-    res.send('Hello World!')
+    res.sendFile(`${BASEPATH}/index.html`)
 })
 
 
 APP.listen(PORT, ( ) => {
 
-    console.log(`App rodando na porta ${PORT}`)
+    console.log(`App rrunning on port ${PORT}`)
 
 })
