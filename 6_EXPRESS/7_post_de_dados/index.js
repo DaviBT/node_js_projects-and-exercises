@@ -18,12 +18,20 @@ APP.get('/users/:id', (req,res) => {
 })
 
 APP.get('/', (req,res) => {
-    res.sendFile(`${BASEPATH}/users.html`)
+    res.sendFile(`${BASEPATH}/index.html`)
 })
 
 
 APP.listen(PORT, ( ) => {
 
     console.log(`App rrunning on port ${PORT}`)
+
+})
+
+APP.get('/users/add', (req,res) => {
+    res.sendFile(`${BASEPATH}/userform.html`)
+})
+
+APP.post('/users/save', (req,res) => {
 
 })
