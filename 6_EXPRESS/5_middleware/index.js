@@ -11,10 +11,14 @@ const CHECKAUTH = function(req, res, next) {
     req.authStatus = true
     if(req.authStatus) {
         console.log("You're logged, you can continue")
+        next()
     } else {
         console.log("You're not logged, make login to continue")
+        next()
     }
 }
+
+APP.use(CHECKAUTH)
 
 APP.get('/', (req,res) => {
     res.sendFile(`${BASEPATH}/index.html`)
