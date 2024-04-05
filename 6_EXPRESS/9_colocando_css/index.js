@@ -1,5 +1,5 @@
-const EXPRESS = require('express')
-const APP = EXPRESS()
+const express = require('express')
+const APP = express()
 const PORT = 3000 // ambient variable
 
 
@@ -9,12 +9,18 @@ const users = require('./users')
 
 // read the body
 APP.use(
-    EXPRESS.urlencoded({
+    express.urlencoded({
         extended:true,
     }),
 )
 
-APP.use(EXPRESS.json())
+APP.use(express.json())
+
+
+// static files
+APP.use(express.static('public'))
+
+
 
 const BASEPATH = PATH.join(__dirname, 'templates')
 
